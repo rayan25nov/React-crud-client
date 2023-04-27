@@ -1,5 +1,5 @@
 import React from "react";
-
+import Styles from "./Table.module.css";
 const Table = ({
   columns,
   data,
@@ -12,7 +12,7 @@ const Table = ({
 
   return (
     <div>
-      <table>
+      <table className={Styles.table}>
         <thead>
           <tr key="theader">
             {columns &&
@@ -33,12 +33,12 @@ const Table = ({
                   </td>
                 ))}
                 <td>
-                  <button onClick={() => selectRowForUpdate(eachRow)}>
+                  <button className={Styles.edit_btn} onClick={() => selectRowForUpdate(eachRow)}>
                     Edit
                   </button>
                 </td>
                 <td>
-                  <button onClick={() => deleteSelectedRow(eachRow._id)}>
+                  <button className={Styles.delete_btn} onClick={() => deleteSelectedRow(eachRow._id)}>
                     Delete
                   </button>
                 </td>

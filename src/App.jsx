@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import Form from "./components/Form";
 import Table from "./components/Table";
+import Styles from "./App.module.css";
 // import StaticTable from "./components/StaticTable";
 
 function App() {
@@ -92,7 +93,7 @@ function App() {
   };
   return (
     <>
-      <button onClick={() => setShowForm(true)}>Create New</button>
+      <button className={Styles.create_btn} onClick={() => setShowForm(true)}>Create New</button>
       {data && showForm ? (
         <Form
           updateOneRow={updateOneRow}

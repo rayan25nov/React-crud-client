@@ -12,6 +12,7 @@ const StaticTable = ({ data, editForm }) => {
             <th>email</th>
             <th>gender</th>
             <th>ip_address</th>
+            <th>country</th>
           </tr>
 
           {data &&
@@ -23,6 +24,7 @@ const StaticTable = ({ data, editForm }) => {
                   <td>{item.email}</td>
                   <td>{item.gender}</td>
                   <td>{item.ip_address}</td>
+                  <td>{item.country}</td>
                 </tr>
               );
             })}

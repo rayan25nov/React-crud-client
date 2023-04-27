@@ -1,0 +1,79 @@
+.form {
+  max-width: 500px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
+}
+
+.form label {
+  font-weight: bold;
+  font-size: 18px;
+  color: #aa77ff;
+}
+
+.form input[type="text"],
+.form input[type="email"] {
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+/* Rest of the CSS code is the same */
+
+.form input[type="text"]:focus,
+.form input[type="email"]:focus {
+  outline: none;
+  box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.2);
+}
+
+.form input[type="text"][disabled],
+.form input[type="email"][disabled] {
+  background-color: #f5f5f5;
+  color: #666;
+}
+
+.form button {
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  background-color: #007bff;
+  color: #fff;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.form button:hover {
+  background-color: #0062cc;
+}
+
+/* For the Back button */
+.back_btn {
+  background-color: #3d4a80; /* darkest shade of blue */
+  color: #fff; /* text color */
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.back_btn:hover {
+  background-color: #5661b3; /* medium shade of blue */
+}
+
+.back_btn:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px #fff, 0 0 0 4px #3d4a80; /* focus styling */
+}
+
+.back_btn:active {
+  background-color: #2c355e; /* darkest shade of blue */
+  transition: background-color 0.1s ease;
+}

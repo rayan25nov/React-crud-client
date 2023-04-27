@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import "./Form.css";
+import Styles from "./Form.module.css";
 
 const Form = ({ selectedRow, updateOneRow, goBackToForm, createNewrecord }) => {
   const [formData, setFormData] = useState();
@@ -14,6 +14,7 @@ const Form = ({ selectedRow, updateOneRow, goBackToForm, createNewrecord }) => {
           email: "",
           gender: "",
           ip_address: "",
+          country: "",
         };
     setFormData(tempObj);
   }, []);
@@ -38,7 +39,7 @@ const Form = ({ selectedRow, updateOneRow, goBackToForm, createNewrecord }) => {
   return (
     <>
       {formData && (
-        <form onSubmit={handleSubmit}>
+        <form className={Styles.form} onSubmit={handleSubmit}>
           <label htmlFor="id">ID:</label>
           <input
             type="text"
@@ -101,10 +102,18 @@ const Form = ({ selectedRow, updateOneRow, goBackToForm, createNewrecord }) => {
             onChange={onInputChange}
             value={formData.ip_address}
           />
+          <label htmlFor="country">Country : </label>
+          <input
+            type="text"
+            name="country"
+            id="country"
+            onChange={onInputChange}
+            value={formData.country}
+          />
           <button type="submit">Submit</button>
         </form>
       )}
-      <button onClick={() => goBackToForm()}>Go Back</button>
+      <button className={Styles.back_btn} onClick={() => goBackToForm()}>Go Back</button>
     </>
   );
 };
