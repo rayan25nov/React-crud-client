@@ -113,7 +113,9 @@ const Form = ({ selectedRow, updateOneRow, goBackToForm, createNewrecord }) => {
           <button type="submit">Submit</button>
         </form>
       )}
-      <button className={Styles.back_btn} onClick={() => goBackToForm()}>Go Back</button>
+      <button className={Styles.back_btn} onClick={() => goBackToForm()}>
+        Go Back
+      </button>
     </>
   );
 };
