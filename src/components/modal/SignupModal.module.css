@@ -1,0 +1,23 @@
+/* signup-modal.module.css */
+
+.signup_modal_container {
+  background-color: #fff;
+  border-radius: 4px;
+  box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.2);
+  padding: 16px;
+  text-align: center;
+}
+
+.signup_modal_heading {
+  font-size: 24px;
+  margin-bottom: 16px;
+}
+
+.signup_modal_text {
+  font-size: 16px;
+  margin-bottom: 16px;
+}
+
+.signup_modal_btn {
+  color: #0077cc;
+}

@@ -1,5 +1,5 @@
 import { React, useRef, useEffect } from "react";
-import Classes from "./Modal.module.css";
+import Classes from "./ErrorModal.module.css";
 const ErrorModal = (props) => {
   const modalRef = useRef(null);
 

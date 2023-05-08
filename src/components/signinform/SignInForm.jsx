@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import ErrorModal from "../modal/ErrorModal";
+import SignupModal from "../modal/SignupModal";
 import Classes from "./SignInForm.module.css";
 
 const SignInForm = ({ setIsAuthenticated }) => {
@@ -9,6 +10,7 @@ const SignInForm = ({ setIsAuthenticated }) => {
   const [password, setPassword] = useState("");
   const [name, setName] = useState("");
   const [showSignIn, setShowSignIn] = useState(true);
+  const [isSignUpSuccessful, setIsSignUpSuccessful] = useState(false);
   const [error, setError] = useState("");
   const navigate = useNavigate();
 
@@ -62,6 +64,8 @@ const SignInForm = ({ setIsAuthenticated }) => {
       const data = await response.json();
       if (!response.ok) {
         setError(data.error);
+      } else {
+        setIsSignUpSuccessful(true);
       }
     } catch (error) {
       console.log(error);
@@ -76,79 +80,83 @@ const SignInForm = ({ setIsAuthenticated }) => {
   return (
     <div>
       {error && <ErrorModal onClose={() => setError("")}>{error}</ErrorModal>}
-      <div className={Classes.signInForm}>
-        {showSignIn && (
-          <form onSubmit={handleSignIn}>
-            <h1>Sign In</h1>
-            <div>
-              <label>Email</label>
-              <input
-                type="email"
-                name="email"
-                placeholder="Enter your email"
-                value={email}
-                onChange={(event) => setEmail(event.target.value)}
-                required
-              />
-            </div>
-            <div>
-              <label>Password</label>
-              <input
-                type="password"
-                name="password"
-                placeholder="Enter your password"
-                value={password}
-                onChange={(event) => setPassword(event.target.value)}
-                required
-              />
-            </div>
-            <button type="submit">Sign In</button>
-            <p>Don't have an account?</p>
-            <button onClick={toggleForm}>Sign Up</button>
-          </form>
-        )}
-        {!showSignIn && (
-          <form onSubmit={handleSignUp}>
-            <h2>Sign Up</h2>
-            <div>
-              <label>Name</label>
-              <input
-                type="text"
-                name="name"
-                placeholder="Enter your name"
-                value={name}
-                onChange={(event) => setName(event.target.value)}
-                required={true}
-              />
-            </div>
-            <div>
-              <label>Email</label>
-              <input
-                type="email"
-                name="email"
-                placeholder="Enter your email"
-                value={email}
-                required={true}
-                onChange={(event) => setEmail(event.target.value)}
-              />
-            </div>
-            <div>
-              <label>Password</label>
-              <input
-                type="password"
-                name="password"
-                placeholder="Enter your password"
-                value={password}
-                onChange={(event) => setPassword(event.target.value)}
-                required={true}
-              />
-            </div>
-            <button type="submit">Sign Up</button>
-            <p>Already have an account?</p>
-            <button onClick={toggleForm}>Sign In</button>
-          </form>
-        )}
-      </div>
+      {isSignUpSuccessful ? (
+        <SignupModal />
+      ) : (
+        <div className={Classes.signInForm}>
+          {showSignIn && (
+            <form onSubmit={handleSignIn}>
+              <h1>Sign In</h1>
+              <div>
+                <label>Email</label>
+                <input
+                  type="email"
+                  name="email"
+                  placeholder="Enter your email"
+                  value={email}
+                  onChange={(event) => setEmail(event.target.value)}
+                  required
+                />
+              </div>
+              <div>
+                <label>Password</label>
+                <input
+                  type="password"
+                  name="password"
+                  placeholder="Enter your password"
+                  value={password}
+                  onChange={(event) => setPassword(event.target.value)}
+                  required
+                />
+              </div>
+              <button type="submit">Sign In</button>
+              <p>Don't have an account?</p>
+              <button onClick={toggleForm}>Sign Up</button>
+            </form>
+          )}
+          {!showSignIn && (
+            <form onSubmit={handleSignUp}>
+              <h2>Sign Up</h2>
+              <div>
+                <label>Name</label>
+                <input
+                  type="text"
+                  name="name"
+                  placeholder="Enter your name"
+                  value={name}
+                  onChange={(event) => setName(event.target.value)}
+                  required={true}
+                />
+              </div>
+              <div>
+                <label>Email</label>
+                <input
+                  type="email"
+                  name="email"
+                  placeholder="Enter your email"
+                  value={email}
+                  required={true}
+                  onChange={(event) => setEmail(event.target.value)}
+                />
+              </div>
+              <div>
+                <label>Password</label>
+                <input
+                  type="password"
+                  name="password"
+                  placeholder="Enter your password"
+                  value={password}
+                  onChange={(event) => setPassword(event.target.value)}
+                  required={true}
+                />
+              </div>
+              <button type="submit">Sign Up</button>
+              <p>Already have an account?</p>
+              <button onClick={toggleForm}>Sign In</button>
+            </form>
+          )}
+        </div>
+      )}
     </div>
   );
 };
