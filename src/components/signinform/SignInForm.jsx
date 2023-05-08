@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import ErrorModal from "../modal/ErrorModal";
 import Classes from "./SignInForm.module.css";
 
-const SignInForm = () => {
+const SignInForm = ({ setIsAuthenticated }) => {
   const api = process.env.API_URL;
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -28,9 +28,11 @@ const SignInForm = () => {
         }),
       });
       const data = await response.json();
-      if (response.ok) {
-        localStorage.setItem("token", data.token);
-        console.log(data.token);
+      const token = data.token;
+      if (response.ok && token) {
+        localStorage.setItem("token", token);
+        setIsAuthenticated(true);
+        // console.log(data.token);
         navigate("/userdata"); // navigate to the CRUD page
       } else {
         setError(data.error);
@@ -56,11 +58,14 @@ const SignInForm = () => {
           email: email,
           password: password,
         }),
-      })
-        .then((response) => response.json())
-        .then((message) => console.log(message))
-        .catch((error) => console.log(error));
-    } catch (error) {}
+      });
+      const data = await response.json();
+      if (!response.ok) {
+        setError(data.error);
+      }
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   const toggleForm = () => {
