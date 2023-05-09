@@ -31,7 +31,8 @@ const SignInForm = ({ setIsAuthenticated }) => {
       });
       const data = await response.json();
       const token = data.token;
-      if (response.ok && token) {
+
+      if (response.ok) {
         localStorage.setItem("token", token);
         setIsAuthenticated(true);
         // console.log(data.token);

@@ -5,7 +5,7 @@ import Table from "../Table";
 import Styles from "./DataComponent.module.css";
 import { Link } from "react-router-dom";
 
-const DataComponent = () => {
+const DataComponent = ({ setIsAuthenticated }) => {
   const api = process.env.API_URL;
 
   // showForm
@@ -123,6 +123,7 @@ const DataComponent = () => {
         className={Styles.logout_btn}
         onClick={() => {
           localStorage.removeItem("token");
+          setIsAuthenticated(false);
         }}
         to={"/"}
       >
